@@ -8,7 +8,7 @@ layout: default
 
 **Q: Do you have any questions?**
 
-A: Ask Chris.
+A: Please contact the <a href="mailto:ea_planning@gsa.gov">EA Team</a>.
 
 **Q: Here is a question?**
 
