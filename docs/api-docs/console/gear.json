@@ -31,7 +31,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "The database key that identifies the given definition. Example: '5576' for Business Application",
-                        "required": false,
+                        "required": true,
                         "type": "string",
                         "format": "string"
                     }
@@ -60,7 +60,7 @@
         }
      },
     "definitions": {
-        "poc": {
+        "pocs": {
             "type": "object",
             "properties": {
                 "ParentId": {
@@ -79,14 +79,18 @@
                     "type": "string",
                     "description": "Point of Contact's email address."
                 },
-                "Owner": {
+                "Region": {
                     "type": "string",
-                    "description": "Point of Contact's organization."
+                    "description": "If the Point of Contact is a RISSO Contact, the field will show the region."
                 },
                 "Type": {
                     "type": "string",
                     "description": "Type of Point of Contact."
-                }
+                },
+                "Organization": {
+                    "type": "string",
+                    "description": "Point of Contact's organization."
+                }				
             }
         },
         "Error": {
