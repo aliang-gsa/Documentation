@@ -30,7 +30,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "The database key that identifies the given definition. Example: '5576' for Business Application",
+                        "description": "The database key that identifies the given definition. Example: '0' for all the records of the given definition sepecified above, '1' for the first record of the definition specified above",
                         "required": true,
                         "type": "string",
                         "format": "string"
@@ -57,8 +57,98 @@
                     }
                 }
             }
-        }
-     },
+        },
+        "/applications/{id}/{def}": {
+            "get": {
+                "summary": "Definitions related to given Business Application List",
+                "description": "This endpoint returns the IT standards and IT standards metadata associated to the indicated Business Application {id}.\n",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The database key that identifies the Business Application. Example: '5576'",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "def",
+                        "in": "path",
+                        "description": "The IT standards, or capabilities related to the given application. Example, capabilities, technologies",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "tags": [
+                    ""
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of related IT standards or capabilities of a given Business Application",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/{def}"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        
+		"/{def}/{id}/applications": {
+            "get": {
+                "summary": "Business Application List related to a given definition",
+                "description": "This endpoint returns the list of GSA Business Applications related to given definition.\n",
+                "parameters": [
+                    
+                    {
+                        "name": "def",
+                        "in": "path",
+                        "description": "The definitions. One of the following values: organizations, applications, parentsystems, FISMA, itstandards, or capabilities.",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The database key that identifies the definition. Example: '12087' for System 'Bulkload'; '16999' for capability 'Vendor Relationship Management'; '20872' for investment 'Analytic Service Platform'. ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }                    
+                ],
+                "tags": [
+                    ""
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of Business Applications",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Application"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+	},
     "definitions": {
         "pocs": {
             "type": "object",
