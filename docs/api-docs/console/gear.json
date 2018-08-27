@@ -135,7 +135,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Application"
+                                "$ref": "#/definitions/applications"
                             }
                         }
                     },
@@ -150,7 +150,7 @@
         }
 	},
     "definitions": {
-        "Application": {
+        "applications": {
             "type": "object",
             "properties": {
                 "Id": {
